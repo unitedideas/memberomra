@@ -1,5 +1,7 @@
+/*fonts*/
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400');
 
+/*Base*/
 
 body {
     background: #000;
@@ -9,10 +11,7 @@ body {
 
 }
 
-h1, h2, h3, h4, h5, h6, p {
-
-}
-
+/*Nav Bar*/
 .header {
     width: 100%;
     border-bottom: 2px solid white;
@@ -31,18 +30,31 @@ h1, h2, h3, h4, h5, h6, p {
 
 }
 
-a:hover{
+a:hover {
     color: #FF473A;
 }
 
-a:active{
-    /*transform: rotate(30deg);*/
-    transform: skew(20deg) ;
-    transition: all 0.3s ease;
-}
-
-
-.page_title{
+/*center title*/
+.page_title {
     text-align: center;
     font-size: 36px;
+}
+
+/*button class*/
+.button_def {
+    display: inline-block;
+    margin: auto;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: Montserrat, sans-serif;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.2s;
+    background-color: rgb(255, 50, 50);
+    height: 42px;
+    padding-top: 8px;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 20px;
+
 }

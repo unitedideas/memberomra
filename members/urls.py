@@ -9,8 +9,8 @@ urlpatterns = [
 
     path('add', views.add, name='add'),
 
-    path('', auth_views.LoginView.as_view(template_name='members/home.html', authentication_form=CustomAuthForm),
-         name='login'),
+    path('', auth_views.LoginView.as_view(template_name='members/home.html', authentication_form=CustomAuthForm,
+                                          redirect_authenticated_user=True), name='login'),
 
     path('logout/', auth_views.LogoutView.as_view(template_name='members/logout.html'), name='logout'),
 

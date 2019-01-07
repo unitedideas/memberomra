@@ -85,7 +85,7 @@ class RiderClass(models.Model):
 
 
 class PositionValues(models.Model):
-    place = models.CharField(unique=True, max_length=80,null=True, blank=True,)
+    place = models.CharField(unique=True, max_length=80, null=True, blank=True, )
     points_value = models.FloatField()
 
     class Meta:
@@ -96,12 +96,11 @@ class PositionValues(models.Model):
         return str(self.place) + " = " + str(self.points_value)
 
 
-
 class Position(models.Model):
     race = models.ForeignKey(Race, models.CASCADE)
     rider = models.ForeignKey(Rider, models.CASCADE)
     rider_class = models.ForeignKey(RiderClass, on_delete=models.CASCADE)
-    place = models.ForeignKey(PositionValues, models.CASCADE,null=True, blank=True,)
+    place = models.ForeignKey(PositionValues, models.CASCADE, null=True, blank=True, )
 
     class Meta:
         verbose_name = 'Race Results'

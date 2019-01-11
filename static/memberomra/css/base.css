@@ -141,6 +141,7 @@ button:visited {
     width: 50%;
     float: right;
     margin-bottom: 3px;
+    text-align: center;
 }
 
 .left_half_container {
@@ -149,17 +150,110 @@ button:visited {
     margin-bottom: 3px;
 }
 
-.search_field {
-    display: inline-block;
-    width: 50%;
+/*depricated*/
+/*.search_field {*/
+/*display: inline-block;*/
+/*width: 50%;*/
+/*text-align: left;*/
+/*height: 42px;*/
+/*max-width: 500px;*/
+/*font-size: 20px;*/
+/*font-family: Montserrat, sans-serif;*/
+/*padding-left: 15px;*/
+/*color: #FFFFFF;*/
+/*font-weight: 100;*/
+/*border:;*/
+/*border-bottom: 2px solid #FFFFFF;*/
+/*background-color: #000000;*/
+/*}*/
+
+.search-form input[type=text], select {
+    border: none;
+    border-bottom: 2px solid rgb(51, 51, 51);
+    background-color: inherit;
+    display: block;
+    width: 100%;
     text-align: left;
     height: 42px;
     max-width: 500px;
     font-size: 20px;
     font-family: Montserrat, sans-serif;
     padding-left: 15px;
-    color: #000000;
+    color: #FFFFFF;
     font-weight: 100;
-    border-bottom: 2px solid #FFFFFF;
-    background-color: #000000;
+
 }
+
+.search-form {
+    width: 100%;
+    max-width: 500px;
+    display: inline-block;
+    height: 42px;
+    padding-left: 15px;
+}
+
+
+.search-form input[type=text]:focus, select:focus {
+    outline: none;
+    color: #FFFFFF;
+    text-align: left;
+    height: 42px;
+    max-width: 500px;
+    font-size: 20px;
+    font-family: Montserrat, sans-serif;
+    padding-left: 15px;
+    font-weight: 400;
+    border-bottom-color: #FFFFFF;
+}
+
+.form-group {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.selected_page {
+    color: rgb(255, 50, 50)
+}
+
+.result-form {
+    width: 100%;
+    max-width: 500px;
+    display: inline-block;
+    height: 42px;
+    padding-left: 15px;
+}
+
+.result_block {
+    width: 100%;
+    max-width: 500px;
+    display: inline-block;
+    height: 80px;
+    padding-left: 15px;
+    background-color: rgb(31, 31, 31);
+}
+
+.result_group {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+member_data_left {
+
+}
+
+edit_del_right {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -15,15 +15,34 @@
 {% block body %}
     <div id="main_container" class="tran_in">
         <div id="left_half_container" class="tran_in left_half_container container">
-            <h2 class="page_title container">SEARCH</h2>
-            <div>
-{#                <div id="first_name_search">first name</div>#}
-{#                <div id="lasst_name_search">last name</div>#}
-                <input id="member_number_search" class="search_field" placeholder="Member Number">
+            <h2 class="page_title">SEARCH</h2>
+            <div class="search-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" name="firstname" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="lastname" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="membernumber" placeholder="Member Number">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="email" placeholder="Email">
+                    </div>
+                </form>
             </div>
         </div>
         <div id="right_half_container" class="tran_in right_half_container">
             <h2 class="page_title">RESULTS</h2>
+            <div class="result_block">
+                {#for member in member search results#}
+                <div class="result_group">
+                    {# for item in list to display #}
+                    <div class="member_data_left ref">{the field}</div>
+                    <div class="edit_del_right ref">edit</div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

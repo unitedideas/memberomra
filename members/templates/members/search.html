@@ -205,6 +205,28 @@
             </div>
         </div>
     </div>
+    <script>
+
+    function () {
+        axios.post("{% url 'event_formset' %}",
+                        {processData: false, contentType: false, event: '{{event}}'},
+                        {
+                            headers:
+                                {
+                                    'X-CSRFToken': '{{ csrf_token }}',
+                                }
+                        }
+                    )
+
+                        .then(function (response) {
+                            app.vue_form = response.data.formset
+                            app.formList.push(app.vue_form)
+                        })
+                },
+
+
+    }
+    </script>
 {% endblock %}
 </body>
 

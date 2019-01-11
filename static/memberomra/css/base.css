@@ -227,8 +227,6 @@ button:visited {
     width: 100%;
     max-width: 500px;
     display: inline-block;
-    height: 80px;
-    padding-left: 15px;
     background-color: rgb(31, 31, 31);
 }
 
@@ -237,16 +235,24 @@ button:visited {
     margin-bottom: 30px;
 }
 
-member_data_left {
+.member_data_left {
+    flex-direction: row;
+    padding-left: 15px;
+    width: 80%;
+    text-align: left;
 
 }
 
-edit_del_right {
-
+.edit_del_right {
+width: 20%;
+    height: 80px;
+    margin: auto;
 }
 
 
-
+p{
+    margin: auto;
+}
 
 
 

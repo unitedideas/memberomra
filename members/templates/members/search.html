@@ -6,7 +6,6 @@
 
     {% block head %}
         <title>OMRA Member Search</title>
-        <link rel="stylesheet" type="text/css" href='{% static "memberomra/css/base.css" %}'>
 
     {% endblock %}
 </head>
@@ -39,7 +38,16 @@
                 {#for member in member search results#}
                 <div class="result_group">
                     {# for item in list to display #}
-                    <div class="member_data_left ref">{the field}</div>
+                    <div class="member_data_left ref">
+                        {# for item in list to display #}
+                        <p>{the field}</p>
+                        <p>{the field}</p>
+                        <p>{the field}</p>
+                        <p>{the field}</p>
+                        <p>{the field}</p>
+                        <p>{the field}</p>
+                        <p>{the field}</p>
+                    </div>
                     <div class="edit_del_right ref">edit</div>
                 </div>
             </div>

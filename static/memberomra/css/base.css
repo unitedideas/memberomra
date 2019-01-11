@@ -11,16 +11,17 @@
 /*Base*/
 body {
     background: #000;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;;
     color: #FFF;
     padding: 0px 30px 0px 30px;
 }
 
-.header_top_block{
+.header_top_block {
     height: 80px;
     background-color: #000000;
     z-index: 5;
 }
+
 /*Nav Bar*/
 .header {
     border-bottom: 2px solid white;
@@ -39,7 +40,7 @@ body {
 
 /*center title*/
 .page_title {
-    margin-top: 0px;
+    margin-top: 0;
     text-align: center;
     font-size: 36px;
     padding-top: 30px;
@@ -129,7 +130,6 @@ button:visited {
 }
 
 .container {
-    /*padding: 10px;*/
     text-align: center;
 }
 
@@ -155,31 +155,12 @@ button:visited {
     float: right;
     text-align: center;
     z-index: 10;
-
 }
 
 .left_half_container {
-    width: 50%;
+    width: 40%;
     float: left;
-    position: fixed;
 }
-
-/*depricated*/
-/*.search_field {*/
-/*display: inline-block;*/
-/*width: 50%;*/
-/*text-align: left;*/
-/*height: 42px;*/
-/*max-width: 500px;*/
-/*font-size: 20px;*/
-/*font-family: Montserrat, sans-serif;*/
-/*padding-left: 15px;*/
-/*color: #FFFFFF;*/
-/*font-weight: 100;*/
-/*border:;*/
-/*border-bottom: 2px solid #FFFFFF;*/
-/*background-color: #000000;*/
-/*}*/
 
 .search-form input[type=text], select {
     border: none;
@@ -195,7 +176,6 @@ button:visited {
     padding-left: 15px;
     color: #FFFFFF;
     font-weight: 100;
-
 }
 
 .search-form {
@@ -204,7 +184,6 @@ button:visited {
     display: inline-block;
     height: 42px;
 }
-
 
 .search-form input[type=text]:focus, select:focus {
     outline: none;
@@ -243,7 +222,6 @@ button:visited {
     display: inline-block;
     background-color: rgb(31, 31, 31);
     margin-bottom: 10px;
-
 }
 
 .result_group {
@@ -255,7 +233,6 @@ button:visited {
     padding-left: 15px;
     width: 80%;
     text-align: left;
-
 }
 
 .edit_del_right {
@@ -263,22 +240,19 @@ button:visited {
     margin: auto;
 }
 
-
 p {
     margin: auto;
 }
-
 
 .total_results_container {
     margin-top: 30px;
     text-align: center;
 }
 
-.total_results {
+total_results {
     margin: 5px;
     font-size: 24px;
     display: inline-block;
-
 }
 
 

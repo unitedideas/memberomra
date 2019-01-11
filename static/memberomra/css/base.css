@@ -8,14 +8,12 @@
     outline-offset: 1px;
 }
 
-
 /*Base*/
 body {
     background: #000;
     font-family: Montserrat;
     color: #FFF;
     padding: 10px 30px 0px 30px;
-
 }
 
 /*Nav Bar*/
@@ -31,7 +29,6 @@ body {
     text-align: center;
     font-size: 36px;
     padding-top: 30px;
-
 }
 
 /*button class*/
@@ -50,9 +47,7 @@ body {
     font-size: 20px;
     width: 100%;
     margin-top: 20px;
-
 }
-
 
 .tran_in {
     transition: all .75s;
@@ -65,7 +60,6 @@ body {
     text-decoration: none;
     color: #FFF;
     font-size: 30px;
-
 }
 
 a {
@@ -76,15 +70,12 @@ a:hover {
     color: rgb(255, 50, 50);
 }
 
-
 h1 {
     font-size: 36px;
     font-weight: 100;
     margin: auto;
     max-width: 500px;
     text-align: left;
-
-
 }
 
 button {
@@ -103,11 +94,9 @@ button {
     border: none;
 }
 
-
 button div {
     padding: 8px;
 }
-
 
 button:hover {
     color: #000;
@@ -118,7 +107,6 @@ button:visited {
     color: #000000;
     background-color: #FFFFFF;
 }
-
 
 @media all and (max-width: 30em) {
      .button_def {
@@ -143,29 +131,23 @@ button:visited {
     padding-left: 15px;
     color: #000000;
     font-weight: 100;
-
-
 }
 
 .field_container {
     padding-top: 100px;
-
 }
 
 .right_half_container {
     width: 50%;
     float: right;
     margin-bottom: 3px;
-
 }
 
 .left_half_container {
     width: 50%;
     float: left;
     margin-bottom: 3px;
-
 }
-
 
 .search_field {
     display: inline-block;

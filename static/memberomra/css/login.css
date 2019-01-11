@@ -3,10 +3,8 @@
 
 /*Add this class to get a reference*/
 .ref {
-    border-style: solid;
-    border-width: 3px;
-    border-color: #006cb4;
-
+    outline: 2px solid red;
+    outline-offset: 1px;
 }
 
 .tran_in {
@@ -18,17 +16,7 @@ body {
     background: #000;
     font-family: Montserrat, sans-serif;
     color: #FFF;
-    /*padding: 10px 10px 0px 10px;*/
 }
-
-a {
-  color: #FFF;
-}
-
-a:hover{
-    color: rgb(255, 50, 50);
-}
-
 
 .page_title {
     padding-top: 30px;
@@ -42,8 +30,6 @@ h1 {
     margin: auto;
     max-width: 500px;
     text-align: left;
-
-
 }
 
 button {
@@ -59,7 +45,7 @@ button {
     width: 100%;
     margin-top: 20px;
     max-width: 500px;
-	border: none;
+    border: none;
 }
 
 
@@ -87,7 +73,7 @@ button:visited {
 }
 
 .container {
-    padding: 10px;
+    /*padding: 10px;*/
     text-align: center;
 }
 
@@ -102,11 +88,42 @@ button:visited {
     padding-left: 15px;
     color: #000000;
     font-weight: 100;
-
-
 }
 
 .field_container {
     padding-top: 100px;
+}
 
+/* login button class*/
+.button_def {
+    display: inline-block;
+    margin: auto;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: Montserrat, sans-serif;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.2s;
+    background-color: rgb(255, 50, 50);
+    height: 42px;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.link {
+    display: inline-block;
+    margin: 15px 25px 15px 0px;
+    position: relative;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 30px;
+}
+
+a {
+    color: #FFF;
+}
+
+a:hover {
+    color: rgb(255, 50, 50);
 }

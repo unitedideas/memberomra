@@ -3,14 +3,29 @@
 
 
 <head>
+
     {% block head %}
         <title>OMRA Member Search</title>
+        <link rel="stylesheet" type="text/css" href='{% static "memberomra/css/base.css" %}'>
+
     {% endblock %}
 </head>
 
 <body>
 {% block body %}
-<h2 class="page_title">SEARCH</h2>
+    <div id="main_container" class="tran_in">
+        <div id="left_half_container" class="tran_in left_half_container container">
+            <h2 class="page_title container">SEARCH</h2>
+            <div>
+{#                <div id="first_name_search">first name</div>#}
+{#                <div id="lasst_name_search">last name</div>#}
+                <input id="member_number_search" class="search_field" placeholder="Member Number">
+            </div>
+        </div>
+        <div id="right_half_container" class="tran_in right_half_container">
+            <h2 class="page_title">RESULTS</h2>
+        </div>
+    </div>
 {% endblock %}
 </body>
 

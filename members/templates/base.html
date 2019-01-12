@@ -2,43 +2,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-{#Favicon#}
-{#    <link rel="shortcut icon" href='{% static "events/favicon.ico" %}' type="image/x-icon"/>#}
+    {#Favicon#}
+    {#    <link rel="shortcut icon" href='{% static "events/favicon.ico" %}' type="image/x-icon"/>#}
     {#Bootstrap CDN#}
 
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"#}
-{#          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">#}
-{##}
+    {#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"#}
+    {#          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">#}
+    {##}
     {#fontawsome CDN#}
-{#    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"#}
-{#          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">#}
+    {#    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"#}
+    {#          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">#}
 
     {# Vue.js CDN #}
-{#    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>#}
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     {# Axios CDN #}
     <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js'></script>
 
     {# static files #}
     <link rel="stylesheet" type="text/css" href='{% static "memberomra/css/base.css" %}'>
-{#    <link rel="stylesheet" href='{% static "memberomra/static/memberomra/js/js.js" %}' type="text/css">#}
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-
+    {#place the google analytics JS here#}
     {% block head %}
         <title>Base</title>
     {% endblock %}
 </head>
 <body>
 <div class="header">
-    <a href="/search" class="link" >
-      <div class="title">Search</div>
+    <a href="/search" class="link">
+        <div class="title">Search</div>
     </a>
-    <a href="/add" class="link" >
-      <div class="title">Add</div>
+    <a href="/add" class="link">
+        <div class="title">Add</div>
     </a>
-    <a href="/logout" class="link" >
-      <div class="title">Logout</div>
+    <a href="/logout" class="link">
+        <div class="title">Logout</div>
     </a>
 </div>
 

@@ -6,7 +6,7 @@
 
     {% block head %}
         <title>OMRA Member Search</title>
-
+        {#        <script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>#}
     {% endblock %}
 </head>
 
@@ -17,20 +17,18 @@
         <div id="left_half_container" class="tran_in left_half_container container">
             <h2 class="page_title">SEARCH</h2>
             <div class="search-form">
-                <form>
-                    <div class="form-group">
-                        <input type="text" name="firstname" placeholder="First Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="lastname" placeholder="Last Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="membernumber" placeholder="Member Number">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="email" placeholder="Email">
-                    </div>
-                </form>
+                <div class="form-group">
+                    <input type="text" id="firstName" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="lastName" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="memberNumber" placeholder="Member Number">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="email" placeholder="Email">
+                </div>
             </div>
             <div class="total_results_container">
                 <div class="total_results"> 14</div>
@@ -39,6 +37,12 @@
             <div class="button_def">
                 <div class="total_results">Clear Results</div>
             </div>
+
+            {# this is the test div #}
+            <br>
+            <br>
+            <br>
+            <h2 id="result" style="color: white">Here</h2>
 
         </div>
         <div id="right_half_container" class="tran_in right_half_container">
@@ -49,155 +53,11 @@
                     {# for item in list to display #}
                     <div class="member_data_left ">
                         {# for item in list to display #}
-                        <p>Shane Cheek</p>
-                        <p>0137645</p>
-                        <p>760-696-8354</p>
-                        <p>unitedideas@gmail.com</p>
-                        <p>301D</p>
-                    </div>
-                    <div class="edit_del_right ">edit</div>
-                    <div class="edit_del_right ">edit</div>
-                </div>
-            </div>
-            <div class="result_block">
-                {#for member in member search results#}
-                <div class="result_group">
-                    {# for item in list to display #}
-                    <div class="member_data_left ">
-                        {# for item in list to display #}
-                        <p>Shane Cheek</p>
-                        <p>0137645</p>
-                        <p>760-696-8354</p>
-                        <p>unitedideas@gmail.com</p>
-                        <p>301D</p>
-                    </div>
-                    <div class="edit_del_right ">edit</div>
-                    <div class="edit_del_right ">edit</div>
-                </div>
-            </div>
-            <div class="result_block">
-                {#for member in member search results#}
-                <div class="result_group">
-                    {# for item in list to display #}
-                    <div class="member_data_left ">
-                        {# for item in list to display #}
-                        <p>Shane Cheek</p>
-                        <p>0137645</p>
-                        <p>760-696-8354</p>
-                        <p>unitedideas@gmail.com</p>
-                        <p>301D</p>
-                    </div>
-                    <div class="edit_del_right ">edit</div>
-                    <div class="edit_del_right ">edit</div>
-                </div>
-            </div>
-            <div class="result_block">
-                {#for member in member search results#}
-                <div class="result_group">
-                    {# for item in list to display #}
-                    <div class="member_data_left ">
-                        {# for item in list to display #}
-                        <p>Shane Cheek</p>
-                        <p>0137645</p>
-                        <p>760-696-8354</p>
-                        <p>unitedideas@gmail.com</p>
-                        <p>301D</p>
-                    </div>
-                    <div class="edit_del_right ">edit</div>
-                    <div class="edit_del_right ">edit</div>
-                </div>
-            </div>
-            <div class="result_block">
-                {#for member in member search results#}
-                <div class="result_group">
-                    {# for item in list to display #}
-                    <div class="member_data_left ">
-                        {# for item in list to display #}
-                        <p>Shane Cheek</p>
-                        <p>0137645</p>
-                        <p>760-696-8354</p>
-                        <p>unitedideas@gmail.com</p>
-                        <p>301D</p>
-                    </div>
-                    <div class="edit_del_right ">edit</div>
-                    <div class="edit_del_right ">edit</div>
-                </div>
-            </div>
-            <div class="result_block">
-                {#for member in member search results#}
-                <div class="result_group">
-                    {# for item in list to display #}
-                    <div class="member_data_left ">
-                        {# for item in list to display #}
-                        <p>Shane Cheek</p>
-                        <p>0137645</p>
-                        <p>760-696-8354</p>
-                        <p>unitedideas@gmail.com</p>
-                        <p>301D</p>
-                    </div>
-                    <div class="edit_del_right ">edit</div>
-                    <div class="edit_del_right ">edit</div>
-                </div>
-            </div>
-            <div class="result_block">
-                {#for member in member search results#}
-                <div class="result_group">
-                    {# for item in list to display #}
-                    <div class="member_data_left ">
-                        {# for item in list to display #}
-                        <p>Shane Cheek</p>
-                        <p>0137645</p>
-                        <p>760-696-8354</p>
-                        <p>unitedideas@gmail.com</p>
-                        <p>301D</p>
-                    </div>
-                    <div class="edit_del_right ">edit</div>
-                    <div class="edit_del_right ">edit</div>
-                </div>
-            </div>
-            <div class="result_block">
-                {#for member in member search results#}
-                <div class="result_group">
-                    {# for item in list to display #}
-                    <div class="member_data_left ">
-                        {# for item in list to display #}
-                        <p>Shane Cheek</p>
-                        <p>0137645</p>
-                        <p>760-696-8354</p>
-                        <p>unitedideas@gmail.com</p>
-                        <p>301D</p>
-                    </div>
-                    <div class="edit_del_right ">edit</div>
-                    <div class="edit_del_right ">edit</div>
-                </div>
-            </div>
-            <div class="result_block">
-                {#for member in member search results#}
-                <div class="result_group">
-                    {# for item in list to display #}
-                    <div class="member_data_left ">
-                        {# for item in list to display #}
-                        <p>Shane Cheek</p>
-                        <p>0137645</p>
-                        <p>760-696-8354</p>
-                        <p>unitedideas@gmail.com</p>
-                        <p>301D</p>
-                    </div>
-                    <div class="edit_del_right ">edit</div>
-                    <div class="edit_del_right ">edit</div>
-                </div>
-            </div>
-            <div class="result_block">
-                {#for member in member search results#}
-                <div class="result_group">
-                    {# for item in list to display #}
-                    <div class="member_data_left ">
-                        {# for item in list to display #}
-                        <p>Shane Cheek</p>
-                        <p>0137645</p>
-                        <p>760-696-8354</p>
-                        <p>unitedideas@gmail.com</p>
-                        <p>301D</p>
+                        <p id="first_last_name">Shane Cheek</p>
+                        <p id="omra_member_number">0137645</p>
+                        <p id="phone">760-696-8354</p>
+                        <p id="email">unitedideas@gmail.com</p>
+                        <p id="plate">301D</p>
                     </div>
                     <div class="edit_del_right ">edit</div>
                     <div class="edit_del_right ">edit</div>
@@ -205,29 +65,45 @@
             </div>
         </div>
     </div>
-
-{% endblock %}
     <script>
 
-    function () {
-        axios.post("{% url 'event_formset' %}",
-                        {processData: false, contentType: false, event: '{{event}}'},
-                        {
-                            headers:
-                                {
-                                    'X-CSRFToken': '{{ csrf_token }}',
-                                }
-                        }
-                    )
+        let firstName = document.querySelector('#firstName')
+        let lastName = document.querySelector('#lastName')
+        let memberNumber = document.querySelector('#memberNumber')
+        let email = document.querySelector('#email')
+        let result = document.querySelector('#result')
 
-                        .then(function (response) {
-                            app.vue_form = response.data.formset
-                            app.formList.push(app.vue_form)
-                        })
+        firstName.value = ""
+        {#display_all()#}
+
+        function getData() {
+            axios({
+                method: 'post',
+                url: "{% url 'member_search' %}",
+                data: {
+                    firstName: firstName.value,
+                    lastName: lastName.value,
+                    memberNumber: memberNumber.value,
+                    email: email.value,
                 },
+                headers: {'X-CSRFToken': '{{ csrf_token }}'}
+            })
+                .then(function (content) {
+                    let member_list_data = JSON.parse(content.data.results)
+                    console.log(member_list_data)
+                    if (member_list_data.length !== 0)
+                        for (x in member_list_data) {
+                            {
+                                result.innerHTML = member_list_data[x].fields.firstName
+                            }
+                        }
+                });
+        }
 
-
+        firstName.addEventListener('input', getData)
 
     </script>
+
+{% endblock %}
 </body>
 

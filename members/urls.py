@@ -9,6 +9,8 @@ urlpatterns = [
 
     path('add', views.add, name='add'),
 
+    path('member_search', views.member_search, name='member_search'),
+
     path('', auth_views.LoginView.as_view(template_name='members/home.html', authentication_form=CustomAuthForm,
                                           redirect_authenticated_user=True), name='login'),
 

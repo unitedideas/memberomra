@@ -26,16 +26,15 @@
                 <div class="form-group">
                     <input type="text" id="memberNumber" placeholder="Member Number">
                 </div>
-                <div class="form-group">
-                    <input type="text" id="email" placeholder="Email">
-                </div>
+                {#                <div class="form-group">#}
+                {#                    <input type="text" id="email" placeholder="Email">#}
+                {#                </div>#}
             </div>
             <div class="total_results_container">
                 <div class="total_results"> 14</div>
                 <div class="total_results">Results</div>
             </div>
             <button class="button_def" onclick="clear_search()">Clear Search</button>
-
 
             {# this is the test div #}
             <br>
@@ -49,7 +48,6 @@
             {# container for member in member search results #}
             <div class="result_block" id="result_block">
                 <div class="result_group " id="result_group" style="display: none">
-
                     {# these get cleared out currently #}
                     <div class="member_data_left" id="member_data_left">
                         <div class="edit_del_right ">edit</div>
@@ -60,28 +58,18 @@
         </div>
     </div>
     <script>
+
         let firstName = document.querySelector('#firstName')
         let lastName = document.querySelector('#lastName')
         let memberNumber = document.querySelector('#memberNumber')
-        let email = document.querySelector('#email')
+        {#let email = document.querySelector('#email')#}
         let result = document.querySelector('#result')
-        let search_inputs = [firstName, lastName, memberNumber, email]
-
-        {#clears the searc table#}
-
-        function clear_search() {
-            for (i in search_inputs) {
-                search_inputs[i].value = ""
-            }
-            getData()
-        }
+        let search_inputs = [firstName, lastName, memberNumber]
 
 
-        firstName.value = ""
         getData()
 
         function getData() {
-
             axios({
                 method: 'post',
                 url: "{% url 'member_search' %}",
@@ -89,18 +77,17 @@
                     firstName: firstName.value,
                     lastName: lastName.value,
                     memberNumber: memberNumber.value,
-                    email: email.value,
+                    {#email: email.value,#}
                 },
                 headers: {'X-CSRFToken': '{{ csrf_token }}'}
             })
                 .then(function (content) {
-                    let member_list = JSON.parse(content.data.results)
-                    console.log(member_list)
+                    let member_list = JSON.parse(content.data.search_results)
                     if (member_list.length !== 0) {
                         for (let i in member_list) {
                             let name = member_list[i].fields.firstName + " " + member_list[i].fields.lastName;
                             let memberNumber = member_list[i].fields.memberNumber;
-                            let plateNumber = member_list[i].fields.plateNumber;
+                            {#let plateNumber = member_list[i].fields.plateNumber;#}
 
                             let prop_list = [name, memberNumber, plateNumber]
 
@@ -108,15 +95,15 @@
                             let result_group = document.querySelector("#result_group");
                             let member_data = document.querySelector("#member_data_left");
 
-
                             let cloned_result_group = result_group.cloneNode(true);
                             result_block.appendChild(cloned_result_group);
                             cloned_result_group.style.display = ""
 
                             let cloned_member_data = cloned_result_group.querySelector("#member_data_left")
                             cloned_member_data.innerHTML = ""
+
+
                             for (let p in prop_list) {
-                                console.log(p)
                                 let para = document.createElement("p")
                                 let text = document.createTextNode(prop_list[p])
                                 para.appendChild(text)
@@ -132,6 +119,19 @@
         }
 
         firstName.addEventListener('input', getData)
+        lastName.addEventListener('input', getData)
+        memberNumber.addEventListener('input', getData)
+        {#email.addEventListener('input', getData)#}
+
+
+        {#clears the searc table#}
+
+        function clear_search() {
+            for (let i in search_inputs) {
+                search_inputs[i].value = ""
+            }
+            getData()
+        }
 
     </script>
 

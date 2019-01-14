@@ -53,7 +53,6 @@
                             <p>firstName lastName</p>
                             <p>phoneNumber</p>
                             <p>email</p>
-                            <p>phoneNumber</p>
                             <p>memberNumber</p>
                             <p>plateNumber</p>
                             <p>active</p>
@@ -91,7 +90,10 @@
                 .then(function (content) {
                     let member_list = JSON.parse(content.data.search_results)
                     console.log(member_list)
-                    if (member_list.length !== 0) {
+                    {# clears the no matches comment if there is data returned #}
+
+                    if (member_list.length > 0) {
+                        result.innerHTML = ""
 
                         {# start of the sear list build #}
                         let result_block = document.getElementById("result_block")
@@ -106,12 +108,12 @@
 
                             {# replace the field name ( matched with the key) with the value from the key of the member dataset #}
                             for (let field_name in member_list[i].fields) {
-                                console.log(field_name)
                                 this_result = this_result.replace(field_name, member_list[i].fields[field_name])
                             }
                             new_results.push(this_result)
                         }
-
+                        console.log(result_block.innerHTML)
+                        console.log(new_results)
                         result_block.innerHTML = new_results.join("")
 
 

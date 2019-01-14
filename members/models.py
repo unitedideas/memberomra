@@ -13,6 +13,8 @@ class Rider(models.Model):
     plateNumber = models.CharField('Plate Number', null=True, blank=True, max_length=120)
     expirationDate = models.DateField('Membership Expiration Date', null=True, blank=True)
     active = models.BooleanField('Membership Active')
+    phoneNumber = models.CharField('Phone Number', null=True, blank=True, max_length=13)
+    email = models.EmailField('Email', null=True, blank=True, max_length=120)
 
     class Meta:
         verbose_name = 'Rider'

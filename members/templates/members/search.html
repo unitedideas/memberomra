@@ -40,14 +40,14 @@
             <br>
             <br>
             <br>
-            <h2 id="result" style="color: white">Here</h2>
+            <h2 id="result" style="color: white"></h2>
 
         </div>
         <div id="right_half_container" class="tran_in right_half_container">
             <div class="page_title"></div>
             {# container for member in member search results #}
             <div class="result_block" id="result_block">
-                <div class="result_group " id="result_group" style="display: none">
+                <div class="result_group" id="result_group" style="display: none">
                     {# these get cleared out currently #}
                     <div class="member_data_left" id="member_data_left">
                         <div class="edit_del_right ">edit</div>
@@ -83,11 +83,15 @@
             })
                 .then(function (content) {
                     let member_list = JSON.parse(content.data.search_results)
+                    console.log(member_list)
                     if (member_list.length !== 0) {
                         for (let i in member_list) {
                             let name = member_list[i].fields.firstName + " " + member_list[i].fields.lastName;
+                            console.log(name)
                             let memberNumber = member_list[i].fields.memberNumber;
-                            {#let plateNumber = member_list[i].fields.plateNumber;#}
+                            console.log(memberNumber)
+
+                            let plateNumber = member_list[i].fields.plateNumber;
 
                             let prop_list = [name, memberNumber, plateNumber]
 

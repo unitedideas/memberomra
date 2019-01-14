@@ -38,11 +38,6 @@ def member_search(request):
 
     if request is not None:
         first_name_result = serialize('json', Rider.objects.filter(firstName__contains=search_data["firstName"]))
-        # first_name_result = {"results": [
-        #     {'id': 1, 'firstName': 'Shane', 'lastName': 'Cheek', 'memberNumber': '123', 'plateNumber': '123A',
-        #      'expirationDate': datetime.date(2019, 12, 31), 'active': True},
-        #     {'id': 2, 'firstName': 'Other', 'lastName': 'Rider', 'memberNumber': '456', 'plateNumber': '456A',
-        #      'expirationDate': datetime.date(2019, 12, 31), 'active': True}]}
         print(first_name_result)
 
     return JsonResponse({"results": first_name_result})

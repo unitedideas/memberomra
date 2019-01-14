@@ -220,12 +220,14 @@ button:visited {
     width: 100%;
     max-width: 500px;
     display: inline-block;
-    background-color: rgb(31, 31, 31);
-    margin-bottom: 10px;
 }
 
 .result_group {
     display: flex;
+    margin-bottom: 10px;
+    background-color:  rgb(31, 31, 31);
+    padding: 5px;
+
 }
 
 .member_data_left {

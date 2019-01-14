@@ -34,9 +34,8 @@
                 <div class="total_results"> 14</div>
                 <div class="total_results">Results</div>
             </div>
-            <div class="button_def">
-                <div class="total_results">Clear Results</div>
-            </div>
+            <button class="button_def" onclick="clear_search()">Clear Search</button>
+
 
             {# this is the test div #}
             <br>
@@ -47,36 +46,42 @@
         </div>
         <div id="right_half_container" class="tran_in right_half_container">
             <div class="page_title"></div>
-            <div class="result_block">
-                {#for member in member search results#}
-                <div class="result_group">
-                    {# for item in list to display #}
-                    <div class="member_data_left ">
-                        {# for item in list to display #}
-                        <p id="first_last_name">Shane Cheek</p>
-                        <p id="omra_member_number">0137645</p>
-                        <p id="phone">760-696-8354</p>
-                        <p id="email">unitedideas@gmail.com</p>
-                        <p id="plate">301D</p>
+            {# container for member in member search results #}
+            <div class="result_block" id="result_block">
+                <div class="result_group " id="result_group" style="display: none">
+
+                    {# these get cleared out currently #}
+                    <div class="member_data_left" id="member_data_left">
+                        <div class="edit_del_right ">edit</div>
+                        <div class="edit_del_right ">edit</div>
                     </div>
-                    <div class="edit_del_right ">edit</div>
-                    <div class="edit_del_right ">edit</div>
                 </div>
             </div>
         </div>
     </div>
     <script>
-
         let firstName = document.querySelector('#firstName')
         let lastName = document.querySelector('#lastName')
         let memberNumber = document.querySelector('#memberNumber')
         let email = document.querySelector('#email')
         let result = document.querySelector('#result')
+        let search_inputs = [firstName, lastName, memberNumber, email]
+
+        {#clears the searc table#}
+
+        function clear_search() {
+            for (i in search_inputs) {
+                search_inputs[i].value = ""
+            }
+            getData()
+        }
+
 
         firstName.value = ""
-        {#display_all()#}
+        getData()
 
         function getData() {
+
             axios({
                 method: 'post',
                 url: "{% url 'member_search' %}",
@@ -89,14 +94,40 @@
                 headers: {'X-CSRFToken': '{{ csrf_token }}'}
             })
                 .then(function (content) {
-                    let member_list_data = JSON.parse(content.data.results)
-                    console.log(member_list_data)
-                    if (member_list_data.length !== 0)
-                        for (x in member_list_data) {
-                            {
-                                result.innerHTML = member_list_data[x].fields.firstName
+                    let member_list = JSON.parse(content.data.results)
+                    console.log(member_list)
+                    if (member_list.length !== 0) {
+                        for (let i in member_list) {
+                            let name = member_list[i].fields.firstName + " " + member_list[i].fields.lastName;
+                            let memberNumber = member_list[i].fields.memberNumber;
+                            let plateNumber = member_list[i].fields.plateNumber;
+
+                            let prop_list = [name, memberNumber, plateNumber]
+
+                            let result_block = document.querySelector("#result_block");
+                            let result_group = document.querySelector("#result_group");
+                            let member_data = document.querySelector("#member_data_left");
+
+
+                            let cloned_result_group = result_group.cloneNode(true);
+                            result_block.appendChild(cloned_result_group);
+                            cloned_result_group.style.display = ""
+
+                            let cloned_member_data = cloned_result_group.querySelector("#member_data_left")
+                            cloned_member_data.innerHTML = ""
+                            for (let p in prop_list) {
+                                console.log(p)
+                                let para = document.createElement("p")
+                                let text = document.createTextNode(prop_list[p])
+                                para.appendChild(text)
+                                cloned_member_data.appendChild(para)
                             }
                         }
+
+
+                    } else {
+                        result.innerHTML = "There are no matches"
+                    }
                 });
         }
 

@@ -30,17 +30,12 @@ def add(request):
 
 def member_search(request):
     search_data = json.load(request)
-    print(search_data)
     search_results = ""
-    print("-------------------------------------------------------------")
-    print(search_data["firstName"] + " " + search_data["lastName"] + " " + search_data["memberNumber"])
-    print("-------------------------------------------------------------")
 
     if request is not None:
         search_results = Rider.objects.filter(firstName__contains=search_data["firstName"])
         search_results = search_results.filter(lastName__contains=search_data["lastName"])
         search_results = search_results.filter(memberNumber__contains=search_data["memberNumber"])
         search_results = serialize('json', search_results)
-        print(search_results)
 
     return JsonResponse({"search_results": search_results})

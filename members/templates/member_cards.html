@@ -1,15 +1,16 @@
 {% load static %}
-
-<div class="result_group ref " style="outline-color: #5b80b2">
-    {# member data to the left #}
-    <div class="member_data_left ">
-        <p id="first_last_name">Shane Cheek</p>
-        <p id="omra_member_number">0137645</p>
-        <p id="phone">760-696-8354</p>
-        <p id="email">unitedideas@gmail.com</p>
-        <p id="plate">301D</p>
+<div class="result_block ref" id="result_block">
+    <div id="result_group_template" style="display: none">
+        <div class="result_group ref ">
+            <div class="member_data_left">
+                <p>firstName lastName</p>
+                <p>phoneNumber</p>
+                <p>email</p>
+                <p>memberNumber</p>
+                <p>plateNumber</p>
+                <p>active</p>
+                <p>expirationDate</p>
+            </div>
+        </div>
     </div>
-    {# edit and delete buttons #}
-    <div class="edit_del_right ">edit</div>
-    <div class="edit_del_right ">edit</div>
 </div>

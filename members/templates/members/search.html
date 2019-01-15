@@ -12,30 +12,30 @@
 
 <body>
 {% block body %}
-    <div class="header_top_block"></div>
-    <div id="main_container" class="tran_in">
-        <div id="left_half_container" class="tran_in left_half_container container">
-            <h2 class="page_title">SEARCH</h2>
-            <div class="search-form">
-                <div class="form-group">
+    <div class="header_top_block "></div>
+    <div id="main_container" class="">
+        <div id="left_half_container" class=" left_half_container container">
+            <h2 class="page_title ">SEARCH</h2>
+            <div class="search-form ">
+                <div class="form-group ">
                     <input type="text" id="firstName" placeholder="First Name">
                 </div>
-                <div class="form-group">
+                <div class="form-group ">
                     <input type="text" id="lastName" placeholder="Last Name">
                 </div>
-                <div class="form-group">
+                <div class="form-group ">
                     <input type="text" id="memberNumber" placeholder="Member Number">
                 </div>
             </div>
-            <div class="total_results_container">
-                <div class="total_results" id="total_results_number"></div>
-                <div class="total_results">Results</div>
+            <div class="total_results_container ">
+                <div class="total_results " id="total_results_number"></div>
+                <div class="total_results ">Results</div>
             </div>
-            <button class="button_def" onclick="clear_search()">Clear Search</button>
+            <button class="button_def " onclick="clear_search()">Clear Search</button>
 
         </div>
-        <div id="right_half_container" class="tran_in right_half_container">
-            <div class="page_title"></div>
+        <div id="right_half_container" class=" right_half_container">
+            <div class="page_title "></div>
             {% include 'member_cards.html' %}
         </div>
     </div>
@@ -49,6 +49,7 @@
         let search_inputs = [firstName, lastName, memberNumber]
         let cloned_result_group_template = document.getElementById("result_group_template").cloneNode(true).innerHTML
         let first_call = ""
+        let default_member_list_length = ""
         let timeout = null;
         getData()
 
@@ -89,6 +90,8 @@
                         if (first_call === "") {
                             console.log('in first call')
                             first_call = result_block.innerHTML
+                            default_member_list_length = member_list.length
+
                         }
                     } else {
                         result_block.innerText = ""
@@ -129,7 +132,8 @@
                 search_inputs[i].value = ""
             }
             result_block.innerHTML = first_call
-            console.log(first_call)
+            document.querySelector("#total_results_number").innerHTML = default_member_list_length
+            console.log(default_member_list_length)
         }
 
     </script>

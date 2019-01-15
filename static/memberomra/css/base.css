@@ -65,6 +65,7 @@ body {
 
 .tran_in {
     transition: all .75s;
+    animation: fadein .6s;
 }
 
 .link {
@@ -258,6 +259,10 @@ p {
 }
 
 
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
 
 
 

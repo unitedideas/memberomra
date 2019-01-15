@@ -48,7 +48,8 @@
         let result = document.querySelector('#result')
         let search_inputs = [firstName, lastName, memberNumber]
         let cloned_result_group_template = document.getElementById("result_group_template").cloneNode(true).innerHTML
-
+        let first_call = ""
+        let timeout = null;
         getData()
 
         function getData() {
@@ -68,7 +69,6 @@
                     {# clears the no matches comment if there is data returned #}
                     document.querySelector("#total_results_number").innerHTML = member_list.length
 
-
                     if (member_list.length > 0) {
                         {# start of search result list build #}
                         let result_group_template = cloned_result_group_template
@@ -85,16 +85,41 @@
                             new_results.push(this_result)
                         }
                         result_block.innerHTML = new_results.join("")
+
+                        if (first_call === "") {
+                            console.log('in first call')
+                            first_call = result_block.innerHTML
+                        }
                     } else {
                         result_block.innerText = ""
                     }
                 });
         }
 
-        firstName.addEventListener('input', getData)
-        lastName.addEventListener('input', getData)
-        memberNumber.addEventListener('input', getData)
-        {#email.addEventListener('input', getData)#}
+        firstName.addEventListener('input', function () {
+            // Clear the timeout if it has already been set.
+            // This will prevent the previous task from executing
+            // if it has been less than <MILLISECONDS>
+            clearTimeout(timeout);
+            // make a new timer
+            timeout = setTimeout(getData, 450);
+        });
+        lastName.addEventListener('input', function () {
+            // Clear the timeout if it has already been set.
+            // This will prevent the previous task from executing
+            // if it has been less than <MILLISECONDS>
+            clearTimeout(timeout);
+            // make a new timer
+            timeout = setTimeout(getData, 450);
+        });
+        memberNumber.addEventListener('input', function () {
+            // Clear the timeout if it has already been set.
+            // This will prevent the previous task from executing
+            // if it has been less than <MILLISECONDS>
+            clearTimeout(timeout);
+            // make a new timer
+            timeout = setTimeout(getData, 450);
+        });
 
 
         {#clears the search table#}
@@ -103,7 +128,8 @@
             for (let i in search_inputs) {
                 search_inputs[i].value = ""
             }
-            getData()
+            result_block.innerHTML = first_call
+            console.log(first_call)
         }
 
     </script>

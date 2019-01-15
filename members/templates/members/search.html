@@ -26,30 +26,28 @@
                 <div class="form-group">
                     <input type="text" id="memberNumber" placeholder="Member Number">
                 </div>
-                {#                <div class="form-group">#}
-                {#                    <input type="text" id="email" placeholder="Email">#}
-                {#                </div>#}
             </div>
             <div class="total_results_container">
-                <div class="total_results" id="total_results_number"> 14</div>
+                <div class="total_results" id="total_results_number"></div>
                 <div class="total_results">Results</div>
             </div>
-            <button class="button_def" onclick="clear_search()">
-                Clear Search
-            </button>
+            <button class="button_def" onclick="clear_search()">Clear Search</button>
 
         </div>
         <div id="right_half_container" class="tran_in right_half_container">
             <div class="page_title"></div>
-            {# container for member in member search results #}
             {% include 'member_cards.html' %}
         </div>
     </div>
     <script>
 
-        let result_block = {% include 'member_cards.html' %}
-            console
-
+        let firstName = document.querySelector('#firstName')
+        let lastName = document.querySelector('#lastName')
+        let memberNumber = document.querySelector('#memberNumber')
+        {#let email = document.querySelector('#email')#}
+        let result = document.querySelector('#result')
+        let search_inputs = [firstName, lastName, memberNumber]
+        let cloned_result_group_template = document.getElementById("result_group_template").cloneNode(true).innerHTML
 
         getData()
 
@@ -67,33 +65,28 @@
             })
                 .then(function (content) {
                     let member_list = JSON.parse(content.data.search_results)
-                    console.log(member_list)
                     {# clears the no matches comment if there is data returned #}
                     document.querySelector("#total_results_number").innerHTML = member_list.length
 
-                    if (member_list.length > 0) {
 
+                    if (member_list.length > 0) {
                         {# start of search result list build #}
-                        console.log(result_block)
-                        let result_group_template = document.getElementById("result_group_template").innerHTML
+                        let result_group_template = cloned_result_group_template
+
                         let new_results = []
 
                         {# loop through each member set returned #}
                         for (let i in member_list) {
-                            console.log(i)
                             let this_result = result_group_template
-
                             {# replace the field name ( matched with the key) with the value from the key of the member dataset #}
                             for (let field_name in member_list[i].fields) {
                                 this_result = this_result.replace(field_name, member_list[i].fields[field_name])
                             }
                             new_results.push(this_result)
                         }
-                        console.log(result_block.innerHTML)
-                        console.log(new_results)
                         result_block.innerHTML = new_results.join("")
-
-
+                    } else {
+                        result_block.innerText = ""
                     }
                 });
         }

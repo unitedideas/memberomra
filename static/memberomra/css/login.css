@@ -9,6 +9,7 @@
 
 .tran_in {
     transition: all .75s;
+    animation: fadein .6s;
 }
 
 

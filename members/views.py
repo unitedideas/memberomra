@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from members.forms import AddMemberForm
 from .models import *
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 import json
 
 
@@ -25,8 +25,21 @@ def search(request):
 @login_required(login_url='')
 def add(request):
     """ Allows an admin to manually add members to the database """
-    form = AddMemberForm()
-    return render(request, 'members/add.html', {'form':form})
+    print(request.method)
+    if request.method == 'POST':
+        print('post method')
+        form = AddMemberForm(request.POST)
+        if form.is_valid():
+            print('success')
+            form.save()
+            return HttpResponseRedirect('/add')
+        else:
+            print('error')
+            render(request, 'members/add.html', {'form': form})
+    else:
+        print('get method')
+        form = AddMemberForm()
+        return render(request, 'members/add.html', {'form': form})
 
 
 def member_search(request):

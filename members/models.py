@@ -7,14 +7,15 @@ for r in range(2010, (datetime.datetime.now().year + 5)):
 
 
 class Rider(models.Model):
-    firstName = models.CharField('First Name', null=True, blank=True, max_length=120)
-    lastName = models.CharField('Last Name', null=True, blank=True, max_length=120)
-    memberNumber = models.CharField('Member Number', null=True, blank=True, max_length=120)
-    plateNumber = models.CharField('Plate Number', null=True, blank=True, max_length=120)
-    expirationDate = models.DateField('Membership Expiration Date', null=True, blank=True)
-    active = models.BooleanField('Membership Active')
-    phoneNumber = models.CharField('Phone Number', null=True, blank=True, max_length=13)
-    email = models.EmailField('Email', null=True, blank=True, max_length=120)
+    firstName = models.CharField('First Name', help_text='First Name', null=True, blank=True, max_length=120)
+    lastName = models.CharField('Last Name', help_text='Last Name', null=True, blank=True, max_length=120)
+    memberNumber = models.CharField('Member Number', help_text='Member Number', null=True, blank=True, max_length=120)
+    plateNumber = models.CharField('Plate Number', help_text='Plate Number', null=True, blank=True, max_length=120)
+    expirationDate = models.DateField('Membership Expiration Date', help_text='Membership Expiration Date', null=True,
+                                      blank=True)
+    phoneNumber = models.CharField('Phone Number', help_text='Phone Number', null=True, blank=True, max_length=13)
+    active = models.BooleanField('Membership Active', help_text='Membership Active', )
+    email = models.EmailField('Email', help_text='Email', null=True, blank=True, max_length=120)
 
     class Meta:
         verbose_name = 'Rider'

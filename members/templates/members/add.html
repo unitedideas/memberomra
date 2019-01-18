@@ -16,7 +16,7 @@
             {% csrf_token %}
             {#        {% include 'add_form.html' %}#}
             {% for field in form %}
-                {#                <p class="form-group">{{ field.label }}</p>#}
+                <p class="form-group">{{ field.errors }}</p>
                 <p class="form-group">{{ field }}</p>
             {% endfor %}
             <button type="submit">Add Member</button>

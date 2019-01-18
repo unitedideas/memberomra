@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from members.forms import AddMemberForm
 from .models import *
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 import json
 
 
@@ -35,7 +35,8 @@ def add(request):
             return HttpResponseRedirect('/add')
         else:
             print('error')
-            render(request, 'members/add.html', {'form': form})
+            args = {'form': form, 'errors': form.errors}
+            return render(request, 'members/add.html', args)
     else:
         print('get method')
         form = AddMemberForm()
@@ -49,7 +50,7 @@ def member_search(request):
     if request is not None:
         search_results = Rider.objects.filter(firstName__contains=search_data["firstName"])
         search_results = search_results.filter(lastName__contains=search_data["lastName"])
-        search_results = search_results.filter(memberNumber__contains=search_data["memberNumber"])
+        search_results = search_results.filter(memberNumber__contains=search_data["memberNumber"]).order_by('lastName')
         search_results = serialize('json', search_results)
 
     return JsonResponse({"search_results": search_results})

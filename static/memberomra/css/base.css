@@ -17,7 +17,7 @@ body {
 }
 
 .header_top_block {
-    height: 80px;
+    height: 40px;
     background-color: #000000;
     z-index: 5;
 }
@@ -161,9 +161,10 @@ button:visited {
 .left_half_container {
     width: 40%;
     float: left;
+    position: fixed;
 }
 
-.search-form input[type=text], input[type=email],input[type=checkbox], select {
+.search-form input[type=text], input[type=email], input[type=checkbox], select {
     border: none;
     border-bottom: 2px solid rgb(51, 51, 51);
     background-color: inherit;
@@ -201,20 +202,13 @@ button:visited {
 
 .form-group {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .selected_page {
     color: rgb(255, 50, 50)
 }
 
-.result-form {
-    width: 100%;
-    max-width: 500px;
-    display: inline-block;
-    height: 42px;
-    padding-left: 15px;
-}
 
 .result_block {
     padding: 5px;
@@ -226,8 +220,8 @@ button:visited {
 .result_group {
     display: flex;
     margin-bottom: 10px;
-    background-color:  rgb(31, 31, 31);
-    padding: 5px;
+    background-color: rgb(31, 31, 31);
+    padding: 2px;
 
 }
 
@@ -260,11 +254,15 @@ p {
 
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.add-form input[type=text], select {
+.add-form input[type=text] {
     border: none;
     border-bottom: 2px solid rgb(51, 51, 51);
     background-color: inherit;
@@ -278,6 +276,24 @@ p {
     padding-left: 15px;
     color: #FFFFFF;
     font-weight: 100;
+}
+
+.add-form select {
+    border: none;
+    border-bottom: 2px solid rgb(51, 51, 51);
+    background-color: inherit;
+    display: block;
+    width: 99%;
+    text-align: left;
+    height: 42px;
+    max-width: 500px;
+    font-size: 20px;
+    font-family: Montserrat, sans-serif;
+    padding-left: 15px;
+    color: #FFFFFF;
+    font-weight: 100;
+    -webkit-appearance: none; /*Removes default chrome and safari style*/
+    -moz-appearance: none; /*Removes default style Firefox*/
 }
 
 .add-form {

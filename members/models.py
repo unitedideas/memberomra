@@ -2,20 +2,24 @@ from django.db import models
 import datetime
 
 YEAR_CHOICES = []
-for r in range(2010, (datetime.datetime.now().year + 5)):
+for r in range(2018, (datetime.datetime.now().year + 2)):
     YEAR_CHOICES.append((r, r))
 
 
 class Rider(models.Model):
     firstName = models.CharField('First Name', help_text='First Name', null=True, blank=True, max_length=120)
     lastName = models.CharField('Last Name', help_text='Last Name', null=True, blank=True, max_length=120)
+    phoneNumber = models.CharField('Phone Number', help_text='Phone Number', null=True, blank=True, max_length=13)
+    email = models.EmailField('Email', help_text='Email', null=True, blank=True, max_length=120)
     memberNumber = models.CharField('Member Number', help_text='Member Number', null=True, blank=True, max_length=120)
     plateNumber = models.CharField('Plate Number', help_text='Plate Number', null=True, blank=True, max_length=120)
-    expirationDate = models.DateField('Membership Expiration Date', help_text='Membership Expiration Date', null=True,
-                                      blank=True)
-    phoneNumber = models.CharField('Phone Number', help_text='Phone Number', null=True, blank=True, max_length=13)
-    active = models.BooleanField('Membership Active', help_text='Membership Active', )
-    email = models.EmailField('Email', help_text='Email', null=True, blank=True, max_length=120)
+    membershipYear = models.CharField('Membership Year', choices=YEAR_CHOICES, default='2018',
+                                      help_text='2018', null=True, blank=True, max_length=40)
+
+    # membershipYear = models.CharField('Membership Year', choices=YEAR_CHOICES, help_text='Membership Year', null=True,
+    #                                   blank=True, max_length=40)
+
+    # active = models.BooleanField('Membership Active', help_text='Membership Active', )
 
     class Meta:
         verbose_name = 'Rider'
@@ -26,7 +30,7 @@ class Rider(models.Model):
 
 
 class Year(models.Model):
-    year = models.IntegerField(choices=YEAR_CHOICES, unique=True, default=datetime.datetime.now().year)
+    year = models.IntegerField(choices=YEAR_CHOICES, default=datetime.datetime.now().year)
 
     class Meta:
         verbose_name = 'Year'
@@ -110,4 +114,4 @@ class Position(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return str(self.rider) + " - " + str(self.place) + " Place" + " " + str(self.value) + " points"
+        return str(self.rider) + " - " + str(self.place) + " Place"

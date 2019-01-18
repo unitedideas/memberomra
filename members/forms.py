@@ -16,4 +16,3 @@ class AddMemberForm(ModelForm):
         fields = '__all__'
 
 
-add_form = AddMemberForm()

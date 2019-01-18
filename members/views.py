@@ -1,7 +1,7 @@
 from django.core.serializers import serialize
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from members.forms import AddMemberForm
 from .models import *
 from django.http import JsonResponse
 import json
@@ -25,7 +25,8 @@ def search(request):
 @login_required(login_url='')
 def add(request):
     """ Allows an admin to manually add members to the database """
-    return render(request, 'members/add.html')
+    form = AddMemberForm()
+    return render(request, 'members/add.html', {'form':form})
 
 
 def member_search(request):

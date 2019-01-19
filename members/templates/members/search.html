@@ -43,6 +43,8 @@
     </div>
     <script>
 
+
+        {#Search function#}
         document.querySelector('#search_nav').style.color = "rgb(255, 50, 50)"
         let firstName = document.querySelector('#firstName')
         let lastName = document.querySelector('#lastName')
@@ -91,7 +93,6 @@
                         result_block.innerHTML = new_results.join("")
 
                         if (first_call === "") {
-                            console.log('in first call')
                             first_call = result_block.innerHTML
                             default_member_list_length = member_list.length
 
@@ -144,7 +145,6 @@
             }
             result_block.innerHTML = first_call
             document.querySelector("#total_results_number").innerHTML = default_member_list_length
-            console.log(default_member_list_length)
         }
 
     </script>

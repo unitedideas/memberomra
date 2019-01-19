@@ -10,9 +10,9 @@ admin.site.register(Position)
 admin.site.register(Club)
 
 
-
 class RiderAdmin(admin.ModelAdmin):
     # ordering = ['lastName']
-    list_display = ['lastName', 'firstName', 'phoneNumber', 'email', 'memberNumber', 'plateNumber']
+    list_display = ['lastName', 'firstName', 'phoneNumber', 'email', 'memberNumber', 'plateNumber', 'membershipYear']
+
 
 admin.site.register(Rider, RiderAdmin)

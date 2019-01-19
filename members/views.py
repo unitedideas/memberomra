@@ -25,20 +25,15 @@ def search(request):
 @login_required(login_url='')
 def add(request):
     """ Allows an admin to manually add members to the database """
-    print(request.method)
     if request.method == 'POST':
-        print('post method')
         form = AddMemberForm(request.POST)
         if form.is_valid():
-            print('success')
             form.save()
             return HttpResponseRedirect('/add')
         else:
-            print('error')
             args = {'form': form, 'errors': form.errors}
             return render(request, 'members/add.html', args)
     else:
-        print('get method')
         form = AddMemberForm()
         return render(request, 'members/add.html', {'form': form})
 
@@ -53,6 +48,5 @@ def member_search(request):
         search_results = search_results.filter(email__contains=search_data["email"])
         search_results = search_results.filter(memberNumber__contains=search_data["memberNumber"]).order_by('lastName')
         search_results = serialize('json', search_results)
-        print(search_results)
 
     return JsonResponse({"search_results": search_results})

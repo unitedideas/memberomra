@@ -50,7 +50,9 @@ def member_search(request):
     if request is not None:
         search_results = Rider.objects.filter(firstName__contains=search_data["firstName"])
         search_results = search_results.filter(lastName__contains=search_data["lastName"])
+        search_results = search_results.filter(email__contains=search_data["email"])
         search_results = search_results.filter(memberNumber__contains=search_data["memberNumber"]).order_by('lastName')
         search_results = serialize('json', search_results)
+        print(search_results)
 
     return JsonResponse({"search_results": search_results})

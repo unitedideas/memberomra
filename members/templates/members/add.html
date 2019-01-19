@@ -12,9 +12,10 @@
 {% block body %}
     <h2 class="page_title">ADD</h2>
     <div class="container">
+
+        {#posts to add in .views returns error or confirmation#}
         <form class="add-form" method="post">
             {% csrf_token %}
-            {#        {% include 'add_form.html' %}#}
             {% for field in form %}
                 <p class="form-group">{{ field.errors }}</p>
                 <p class="form-group">{{ field }}</p>

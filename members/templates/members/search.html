@@ -25,6 +25,9 @@
                 <div class="form-group ">
                     <input type="text" id="memberNumber" placeholder="Member Number">
                 </div>
+                <div class="form-group ">
+                    <input type="text" id="email" placeholder="Email">
+                </div>
             </div>
             <div class="total_results_container ">
                 <div class="total_results " id="total_results_number"></div>
@@ -44,9 +47,9 @@
         let firstName = document.querySelector('#firstName')
         let lastName = document.querySelector('#lastName')
         let memberNumber = document.querySelector('#memberNumber')
-        {#let email = document.querySelector('#email')#}
+        let email = document.querySelector('#email')
         let result = document.querySelector('#result')
-        let search_inputs = [firstName, lastName, memberNumber]
+        let search_inputs = [firstName, lastName, memberNumber, email]
         let cloned_result_group_template = document.getElementById("result_group_template").cloneNode(true).innerHTML
         let first_call = ""
         let default_member_list_length = ""
@@ -61,7 +64,7 @@
                     firstName: firstName.value,
                     lastName: lastName.value,
                     memberNumber: memberNumber.value,
-                    {#email: email.value,#}
+                    email: email.value,
                 },
                 headers: {'X-CSRFToken': '{{ csrf_token }}'}
             })
@@ -100,6 +103,14 @@
         }
 
         firstName.addEventListener('input', function () {
+            // Clear the timeout if it has already been set.
+            // This will prevent the previous task from executing
+            // if it has been less than <MILLISECONDS>
+            clearTimeout(timeout);
+            // make a new timer
+            timeout = setTimeout(getData, 450);
+        });
+        email.addEventListener('input', function () {
             // Clear the timeout if it has already been set.
             // This will prevent the previous task from executing
             // if it has been less than <MILLISECONDS>

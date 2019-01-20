@@ -10,6 +10,8 @@ urlpatterns = [
 
     path('member_search', views.member_search, name='member_search'),
 
+    path('edit_member', views.edit_member, name='edit_member'),
+
     path('', auth_views.LoginView.as_view(template_name='members/home.html', authentication_form=CustomAuthForm,
                                           redirect_authenticated_user=True), name='login'),
 
@@ -36,5 +38,7 @@ urlpatterns = [
     path('profile/password/done',
          auth_views.PasswordChangeDoneView.as_view(template_name='members/password_change_done.html'),
          name='password_change_done'),
+
+
 
 ]

@@ -115,7 +115,12 @@ button div {
 
 button:hover {
     color: #000;
+    outline: 3px solid rgb(255, 50, 50);
+}
+button:active {
+    color: rgb(255, 50, 50);
     background-color: #FFF;
+    outline: 3px solid rgb(255, 50, 50);
 }
 
 button:visited {

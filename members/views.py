@@ -50,3 +50,11 @@ def member_search(request):
         search_results = serialize('json', search_results)
 
     return JsonResponse({"search_results": search_results})
+
+
+def edit_member(request):
+    pass
+
+
+def delete_member(request):
+    pass

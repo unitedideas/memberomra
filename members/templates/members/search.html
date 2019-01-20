@@ -46,8 +46,6 @@
     {% include 'edit_modal.html' %}
 
     <script>
-        modal.classList.toggle("closed");
-        modalOverlay.classList.toggle("closed");
 
         {#Search function#}
         document.querySelector('#search_nav').style.color = "rgb(255, 50, 50)"
@@ -77,6 +75,7 @@
             })
                 .then(function (content) {
                     let member_list = JSON.parse(content.data.search_results)
+
                     {# clears the no matches comment if there is data returned #}
                     document.querySelector("#total_results_number").innerHTML = member_list.length
 
@@ -95,7 +94,6 @@
                                 this_result = this_result.replace(field_name, member_list[i].fields[field_name])
                                 this_result = this_result.replace("pk", member_list[i].pk)
                             }
-                            console.log(this_result)
                             new_results.push(this_result)
 
                         }

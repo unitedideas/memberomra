@@ -1,51 +1,27 @@
 {#modal background#}
-<div class="modal-overlay" id="modal-overlay"></div>
+<div class="modal-overlay closed ref" id="modal-overlay"></div>
 
-<div class="modal" id="modal">
+<div class="modal closed ref" id="modal">
     {#close modal#}
-    <button class="close-button" id="close-button">Close</button>
+    <button class="close-button ref" id="close-button">Close</button>
 
-    <div class="inner-modal">
-        <form method="post" action="{% url 'edit_member' %}">
+    <div class="inner-modal ref">
+        <form class="add-form ref" method="post" action="{% url 'edit_member' %}">
             {% csrf_token %}
             {% for field in form %}
                 <p class="form-group">{{ field.errors }}</p>
                 <p class="form-group">{{ field }}</p>
             {% endfor %}
-            {#            <div class="form-group">#}
-            {#                <input type="text" id="firstName" placeholder="First Name">#}
-            {#            </div>#}
-            {#            <div class="form-group">#}
-            {#                <input type="text" id="lastName" placeholder="Last Name">#}
-            {#            </div>#}
-            {#            <div class="form-group">#}
-            {#                <input type="email" id="email" placeholder="Email">#}
-            {#            </div>#}
-            {#            <div class="form-group">#}
-            {#                <input type="text" id="phoneNumber" placeholder="Phone Number">#}
-            {#            </div>#}
-            {#            <div class="form-group">#}
-            {#                <input type="text" id="address" placeholder="Address">#}
-            {#            </div>#}
-            {#            <div class="form-group">#}
-            {#                <input type="text" id="state" placeholder="State">#}
-            {#            </div>#}
-            {#            <div class="form-group">#}
-            {#                <input type="text" id="zip" placeholder="Zip Code">#}
-            {#            </div>#}
-            {#            <div class="form-group">#}
-            {#                <input type="text" id="memberNumber" placeholder="Member Number">#}
-            {#            </div>#}
-            <button onclick="edit_member()">Add Member</button>
+            <button onclick="edit_member()">Save Edits</button>
             <button onclick="delete_member()">Delete Member</button>
         </form>
     </div>
 </div>
 
 <script>
-    var modal = document.querySelector("#modal");
-    var modalOverlay = document.querySelector("#modal-overlay");
-    var closeButton = document.querySelector("#close-button");
+    let modal = document.querySelector("#modal");
+    let modalOverlay = document.querySelector("#modal-overlay");
+    let closeButton = document.querySelector("#close-button");
 
     closeButton.addEventListener("click", function () {
         modal.classList.toggle("closed");
@@ -57,48 +33,18 @@
     }
 
 
-    function edit_member() {
+    function edit_member(pk) {
         axios({
             method: 'post',
             url: "{% url 'edit_member' %}",
             data: {
-                firstName: firstName.value,
-                lastName: lastName.value,
-                memberNumber: memberNumber.value,
-                email: email.value,
+                pk: pk,
             },
             headers: {'X-CSRFToken': '{{ csrf_token }}'}
         })
             .then(function (content) {
-                let member_list = JSON.parse(content.data.search_results)
-                {# clears the no matches comment if there is data returned #}
-                document.querySelector("#total_results_number").innerHTML = member_list.length
-
-                if (member_list.length > 0) {
-                    {# start of search result list build #}
-                    let result_group_template = cloned_result_group_template
-
-                    let new_results = []
-
-                    {# loop through each member set returned #}
-                    for (let i in member_list) {
-                        let this_result = result_group_template
-                        {# replace the field name ( matched with the key) with the value from the key of the member dataset #}
-                        for (let field_name in member_list[i].fields) {
-                            this_result = this_result.replace(field_name, member_list[i].fields[field_name])
-                        }
-                        new_results.push(this_result)
-                    }
-                    result_block.innerHTML = new_results.join("")
-
-                    if (first_call === "") {
-                        first_call = result_block.innerHTML
-                        default_member_list_length = member_list.length
-
-                    }
-                } else {
-                    result_block.innerText = ""
-                }
+                console.log('In the then return')
+                console.log(content);
             });
     }
 </script>

@@ -1,6 +1,6 @@
 from django.core.serializers import serialize
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from members.forms import AddMemberForm
 from .models import *
@@ -44,31 +44,46 @@ def member_search(request):
     search_results = ""
 
     if request is not None:
-        search_results = Rider.objects.filter(Q(firstName__isnull=True) | Q(firstName__contains=search_data["firstName"]))
+        search_results = Rider.objects.filter(
+            Q(firstName__isnull=True) | Q(firstName__contains=search_data["firstName"]))
         search_results = search_results.filter(Q(lastName__isnull=True) | Q(lastName__contains=search_data["lastName"]))
         search_results = search_results.filter(Q(email__isnull=True) | Q(email__contains=search_data["email"]))
-        search_results = search_results.filter(Q(memberNumber__isnull=True) | Q(memberNumber__contains=search_data["memberNumber"])).order_by('lastName')
-        # search_results = Rider.objects.all()
+        search_results = search_results.filter(
+            Q(memberNumber__isnull=True) | Q(memberNumber__contains=search_data["memberNumber"])).order_by('lastName')
+
         search_results = serialize('json', search_results)
-        print(search_results)
 
     return JsonResponse({"search_results": search_results})
 
 
 def edit_member(request):
     """ Async (axios call) allows an admin to edit member data """
-    print('called edit_member')
-    search_data = json.load(request)
-    search_results = ""
+    print('called edit_member view')
+    if request.method == 'GET':
+        pk = request.META['HTTP_PK']
+        print("Edit Request for " + pk)
+        edit_member = get_object_or_404(Rider, id=pk)
+        print(edit_member)
 
-    if request is not None:
-        search_results = Rider.objects.all()
+        form = AddMemberForm(instance=edit_member)
+        print(form)
 
-        # search_results = Rider.objects.all()
-        search_results = serialize('json', search_results)
+        # form = serialize('json', form)
 
-    return JsonResponse({"search_results": search_results})
+        return JsonResponse({"form": form})
 
+    # if request.method == 'GET':
+    #     pass
+    #     # edit_person = Rider.objects.filter("pk" = request.GET.pk)
+    #     edit_person = serialize('json', 'edit_person')
+    #
+    #     return JsonResponse({"search_results": edit_person})
+    #
+    # else:
+    #     add_member_form = AddMemberForm(request.POST)
+    #     for form in add_member_form:
+    #         print(form)
+    #     return JsonResponse({"success": True})
 
 
 def delete_member(request):

@@ -5,7 +5,6 @@
     <div id="result_group_template" style="display: none">
         <div class="result_group tran_in">
             <div class="member_data_left tran_in">
-                <p id="pk">pk</p>
                 <p>firstName lastName</p>
                 <p>memberNumber</p>
                 <p>phoneNumber</p>
@@ -13,9 +12,8 @@
                 <p>plateNumber</p>
             </div>
             {#Edit Button#}
-            <div class="edit_del_right tran_in">
-                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"
-                     onclick=toggle_edit_member()>
+            <div class="edit_del_right tran_in" onclick=toggle_edit_member(pk)>
+                <svg width="23" height="23" viewBox="0 0 23 23" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                           d="M11.4839 14.247L10.5948 13.3585L20.2348 3.72654L21.1239 4.61504L11.4839 14.247ZM9.73845 12.5018L8.8493 11.6133L18.4883 1.98136L19.3774 2.86986L9.73845 12.5018ZM8.12152 15.225L8.85193 11.6107L11.4872 14.2451L8.12152 15.225ZM22.6286 1.26223L21.7375 0.371718C21.2432 -0.123232 20.4545 -0.122228 19.9682 0.364691L19.0871 1.24516L21.7545 3.91167L22.6367 3.0312C23.1259 2.54027 23.1189 1.75216 22.6286 1.26223ZM18.1095 22.0031H1.0067V5.06431H13.927L14.9237 4.06839H0V23H19.1162V8.08723L18.1095 9.09319V22.0031Z"
                           fill="white"/>
@@ -23,8 +21,7 @@
             </div>
             {#Trash Button#}
             <div class="edit_del_right tran_in">
-                <svg width="19" height="25" viewBox="0 0 19 25" fill="none" xmlns="http://www.w3.org/2000/svg"
-                     onclick=toggle_delete_member()>
+                <svg width="19" height="25" viewBox="0 0 19 25" fill="none" onclick=toggle_delete_member()>
                     <path fill-rule="evenodd" clip-rule="evenodd"
                           d="M14.0005 2C14.0005 0.8955 13.105 0 12.0005 0H7.0005C5.896 0 5.0005 0.8955 5.0005 2V3H0V4H1.125L1.9995 23.5C1.9995 23.5 2.314 25 3.4995 25C4.323 25 7.651 25 8.9995 25C8.9995 25 9.4055 25 9.9995 25C11.1453 25 15.1453 25 15.4995 25C16.6855 25 17 23.5 17 23.5L17.8335 4H19V3H14.0005V2ZM6.00049 2C6.00049 1.4475 6.52315 1 7.16715 1H11.8338C12.4778 1 13.0005 1.448 13.0005 2V3H6.00049V2V2ZM15.5 23.9995H10H9H3.5C3.5 23.9995 3.084 23.7725 3 22.9995C2.9165 22.2265 2.125 3.9995 2.125 3.9995H16.7915C16.792 3.9995 16.084 22.2265 16.0005 22.9995C15.9165 23.7725 15.5 23.9995 15.5 23.9995ZM13.5005 6H12.5005L12.0005 22H13.0005L13.5005 6ZM7.0005 22L6.5005 6H5.5L6 22H7.0005ZM9 6H10V22H9V6Z"
                           fill="white"/>
@@ -38,9 +35,22 @@
 <script>
     {#Opens edit modal to edit member#}
 
-    function toggle_edit_member() {
-        modal.classList.toggle("closed");
-        modalOverlay.classList.toggle("closed");
+    function toggle_edit_member(pk) {
+        axios({
+            method: 'get',
+            url: "{% url 'edit_member' %}",
+            {#data: {#}
+            {#    pk: pk,#}
+            {# },#}
+            headers: {'X-CSRFToken': '{{ csrf_token }}', pk: pk}
+        })
+            .then(function (content) {
+                console.log('In the then return')
+                console.log(content);
+                modal.classList.toggle("closed");
+                modalOverlay.classList.toggle("closed");
+
+            });
     }
 
     {#Opens edit modal to edit member#}

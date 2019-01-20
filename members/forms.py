@@ -26,4 +26,3 @@ class AddMemberForm(ModelForm):
     class Meta:
         model = Rider
         fields = '__all__'
-        exclude = ['expirationDate', 'position']

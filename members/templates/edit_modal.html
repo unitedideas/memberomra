@@ -6,49 +6,55 @@
 <div class="modal" id="modal">
     {#close modal#}
     <button class="close-button" id="close-button">Close</button>
-    <div class="inner-modal">
-        <div class="form-group">
-            <input type="text" id="firstName" placeholder="First Name">
+    <form method="post">
+        <div class="inner-modal">
+            <div class="form-group">#}
+                <input type="text" id="firstName" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <input type="text" id="lastName" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="text" id="phoneNumber" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+                <input type="text" id="address" placeholder="Address">
+            </div>
+            <div class="form-group">
+                <input type="text" id="state" placeholder="State">
+            </div>
+            <div class="form-group">
+                <input type="text" id="zip" placeholder="Zip Code">
+            </div>
+            <div class="form-group">
+                <input type="text" id="memberNumber" placeholder="Member Number">
+            </div>
+            <button onclick="save_member()">Save Edits</button>
+            <button onclick="delete_member()">Delete Member</button>
         </div>
-        <div class="form-group">
-            <input type="text" id="lastName" placeholder="Last Name">
-        </div>
-        <div class="form-group">
-            <input type="email" id="email" placeholder="Email">
-        </div>
-        <div class="form-group">
-            <input type="text" id="phoneNumber" placeholder="Phone Number">
-        </div>
-        <div class="form-group">
-            <input type="text" id="address" placeholder="Address">
-        </div>
-        <div class="form-group">
-            <input type="text" id="state" placeholder="State">
-        </div>
-        <div class="form-group">
-            <input type="text" id="zip" placeholder="Zip Code">
-        </div>
-        <div class="form-group">
-            <input type="text" id="memberNumber" placeholder="Member Number">
-        </div>
-        <button onclick="edit_member()">Save Edits</button>
-        <button onclick="delete_member()">Delete Member</button>
-    </div>
+    </form>
 </div>
 
 <script>
     var modal = document.querySelector("#modal");
     var modalOverlay = document.querySelector("#modal-overlay");
     var closeButton = document.querySelector("#close-button");
-    var openButton = document.querySelector("#open-button");
+    {#var openButton = document.querySelector("#open-button");#}
 
     closeButton.addEventListener("click", function () {
         modal.classList.toggle("closed");
         modalOverlay.classList.toggle("closed");
     });
 
-    openButton.addEventListener("click", function () {
-        modal.classList.toggle("closed");
-        modalOverlay.classList.toggle("closed");
-    });
+    function save_member(){
+        console.log("asfasdf")
+    }
+
+    {#openButton.addEventListener("click", function () {#}
+    {#    modal.classList.toggle("closed");#}
+    {#    modalOverlay.classList.toggle("closed");#}
+    {# }); #}
 </script>

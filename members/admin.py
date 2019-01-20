@@ -11,7 +11,6 @@ admin.site.register(Club)
 
 
 class RiderAdmin(admin.ModelAdmin):
-    # ordering = ['lastName']
     list_display = ['lastName', 'firstName', 'phoneNumber', 'email', 'memberNumber', 'plateNumber', 'membershipYear']
 
 

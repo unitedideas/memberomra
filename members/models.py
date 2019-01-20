@@ -63,10 +63,10 @@ class RiderClass(models.Model):
 
 class Rider(models.Model):
     """ A Race has Many Riders """
-    firstName = models.CharField('First Name', help_text='First Name', null=True, blank=True, max_length=120)
-    lastName = models.CharField('Last Name', help_text='Last Name', null=True, blank=True, max_length=120)
+    firstName = models.CharField('First Name', help_text='First Name', max_length=120)
+    lastName = models.CharField('Last Name', help_text='Last Name', max_length=120)
     phoneNumber = models.CharField('Phone Number', help_text='Phone Number', null=True, blank=True, max_length=13)
-    email = models.EmailField('Email', help_text='Email', null=True, blank=True, max_length=120)
+    email = models.EmailField('Email', help_text='Email', max_length=120)
     memberNumber = models.CharField('Member Number', help_text='Member Number', null=True, blank=True,
                                     max_length=120)
     plateNumber = models.CharField('Plate Number', help_text='Plate Number', null=True, blank=True, max_length=120)
@@ -80,8 +80,8 @@ class Rider(models.Model):
         verbose_name = 'Rider'
         verbose_name_plural = verbose_name
 
-    def __str__(self):
-        return self.firstName + " " + self.lastName
+    # def __str__(self):
+    #     return self.firstName + " " + self.lastName
 
 
 class Position(models.Model):

@@ -50,24 +50,25 @@ def member_search(request):
         search_results = search_results.filter(Q(memberNumber__isnull=True) | Q(memberNumber__contains=search_data["memberNumber"])).order_by('lastName')
         # search_results = Rider.objects.all()
         search_results = serialize('json', search_results)
+        print(search_results)
 
     return JsonResponse({"search_results": search_results})
 
 
 def edit_member(request):
-    """ Allows an admin to edit member data """
-    if request.method == 'POST':
-        edit_form = AddMemberForm(request.POST)
-        if edit_form.is_valid():
-            for data in edit_form:
-                print(data)
-                return HttpResponseRedirect('/search')
-        else:
-            args = {'edit_form': edit_form, 'errors': edit_form.errors}
-            return render(request, 'members/add.html', args)
-    else:
-        edit_form = AddMemberForm()
-        return render(request, 'members/add.html', {'edit_form': edit_form})
+    """ Async (axios call) allows an admin to edit member data """
+    print('called edit_member')
+    search_data = json.load(request)
+    search_results = ""
+
+    if request is not None:
+        search_results = Rider.objects.all()
+
+        # search_results = Rider.objects.all()
+        search_results = serialize('json', search_results)
+
+    return JsonResponse({"search_results": search_results})
+
 
 
 def delete_member(request):

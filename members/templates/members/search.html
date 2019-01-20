@@ -41,8 +41,13 @@
             {% include 'member_cards.html' %}
         </div>
     </div>
-    <script>
 
+    {#  Member Edit Modal Template  #}
+    {% include 'edit_modal.html' %}
+
+    <script>
+        modal.classList.toggle("closed");
+        modalOverlay.classList.toggle("closed");
 
         {#Search function#}
         document.querySelector('#search_nav').style.color = "rgb(255, 50, 50)"
@@ -84,11 +89,15 @@
                         {# loop through each member set returned #}
                         for (let i in member_list) {
                             let this_result = result_group_template
+                            {# get the pk for edit identification #}
                             {# replace the field name ( matched with the key) with the value from the key of the member dataset #}
                             for (let field_name in member_list[i].fields) {
                                 this_result = this_result.replace(field_name, member_list[i].fields[field_name])
+                                this_result = this_result.replace("pk", member_list[i].pk)
                             }
+                            console.log(this_result)
                             new_results.push(this_result)
+
                         }
                         result_block.innerHTML = new_results.join("")
 

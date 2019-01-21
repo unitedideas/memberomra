@@ -10,7 +10,7 @@ class CustomAuthForm(AuthenticationForm):
     password = forms.CharField(widget=PasswordInput(attrs={'placeholder': 'Password', 'class': "inputs_fields"}))
 
 
-class AddMemberForm(ModelForm):
+class MemberForm(ModelForm):
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('auto_id', '%s')
         kwargs.setdefault('label_suffix', '')

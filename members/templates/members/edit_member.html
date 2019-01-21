@@ -1,0 +1,23 @@
+{% load static %}
+
+<body>
+{% block body %}
+    <h2 class="page_title">EDIT</h2>
+    <div class="container">
+
+        {#posts to add in .views returns error or confirmation#}
+        <form class="add-form" method="post" action="{% url 'edit_member' %}?pk={{ pk }}">
+            {% csrf_token %}
+            {% for field in form %}
+                <p class="form-group">{{ field.errors }}</p>
+                <p class="form-group">{{ field.label_tag }}{{ field }}</p>
+            {% endfor %}
+            <button type="submit">Save Changes</button>
+{#            <button onclick="delete_member()">Delete Member</button>#}
+        <div>{{ pk }}</div>
+        </form>
+    </div>
+
+{% endblock %}
+</body>
+

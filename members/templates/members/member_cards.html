@@ -48,11 +48,13 @@
 <script>
     {#Opens edit modal to edit member#}
 
+    let body = document.body
     let modal = document.querySelector("#modal");
     let modalOverlay = document.querySelector("#modal-overlay");
     let closeButton = document.querySelector("#close-button");
 
     closeButton.addEventListener("click", function () {
+        body.classList.toggle("disable-scroll")
         modal.classList.toggle("closed");
         modalOverlay.classList.toggle("closed");
     });
@@ -70,6 +72,7 @@
                 console.log(pk)
                 modal.classList.toggle("closed");
                 modalOverlay.classList.toggle("closed");
+                body.classList.toggle("disable-scroll")
                 console.log(content.data);
                 let form = content.data
                 let form_holder = document.querySelector(".add-form")

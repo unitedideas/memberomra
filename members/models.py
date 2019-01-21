@@ -65,8 +65,8 @@ class Rider(models.Model):
     """ A Race has Many Riders """
     firstName = models.CharField('First Name', help_text='First Name', max_length=120)
     lastName = models.CharField('Last Name', help_text='Last Name', max_length=120)
-    phoneNumber = models.CharField('Phone Number', help_text='Phone Number', null=True, blank=True, max_length=13)
-    email = models.EmailField('Email', help_text='Email', max_length=120)
+    phoneNumber = models.CharField('Phone Number', help_text='Phone Number', null=True, blank=True, max_length=14)
+    email = models.CharField('Email', help_text='Email', max_length=120)
     memberNumber = models.CharField('Member Number', help_text='Member Number', null=True, blank=True,
                                     max_length=120)
     plateNumber = models.CharField('Plate Number', help_text='Plate Number', null=True, blank=True, max_length=120)

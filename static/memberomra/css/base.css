@@ -17,6 +17,17 @@ body {
     padding: 0px 30px 0px 30px;
 }
 
+.disable-scroll {
+    /* disable scrollbar on both x and y axis */
+    overflow: hidden;
+    /* disable scroll */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 a {
     color: #FFF;
 }

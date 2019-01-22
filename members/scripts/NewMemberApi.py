@@ -30,14 +30,36 @@ params = (
     ('fulfillmentStatus', 'PENDING'),
 )
 
-list_data_needed = ["id"]
+# First Name
+# Last Name
+# Current Rider OMRA Number
+# Rider Age *
+# Rider Birth Date *
+# MC Brand and Model
+# Email Address *
+# Class *
+
+
+# how to update the dict
+# my_dict.update({'corse': 'my new definition'})
+
+
+key_list = ['firstName', 'lastName', 'memberNumber', 'birthDate', 'motorcycleBrandAndModel', 'email',
+            'riderClass']
+data_list = []
 
 response = requests.get('https://api.squarespace.com/1.0/commerce/orders/', headers=headers, params=params)
 testDict = response.json()
-order_list = (testDict['result'])
-print(order_list)
-for order in range(len(order_list)):
-    single_order_data = order_list[order]
-    for data_point in list_data_needed:
-        print(single_order_data[data_point])
-        print('----------------')
+# customizations
+
+custom_form_data = testDict['result'][0]['lineItems'][0]['customizations']
+for each_dict in range(len(custom_form_data)):
+    for label_value in custom_form_data[each_dict]:
+        if label_value == 'value':
+            if custom_form_data[each_dict]['label'] != 'Rider Age *':
+                data_list.append(custom_form_data[each_dict][label_value])
+print(data_list)
+data_dict = dict(zip(key_list, data_list))
+print(data_dict)
+# print(single_order_data[data_point][0]['customizations'])
+print('----------------')

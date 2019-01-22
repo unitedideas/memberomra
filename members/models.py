@@ -67,11 +67,16 @@ class Rider(models.Model):
     lastName = models.CharField('Last Name', help_text='Last Name', max_length=120)
     phoneNumber = models.CharField('Phone Number', help_text='Phone Number', null=True, blank=True, max_length=14)
     email = models.CharField('Email', help_text='Email', max_length=120)
+    birthDate = models.DateField('Birth Date', help_text='Birth Date', null=True, blank=True)
     memberNumber = models.CharField('Member Number', help_text='Member Number', null=True, blank=True,
                                     max_length=120)
     plateNumber = models.CharField('Plate Number', help_text='Plate Number', null=True, blank=True, max_length=120)
     membershipYear = models.IntegerField('Membership Year', choices=YEAR_CHOICES, default='2018',
                                          help_text='Valid Membership Year', unique=False, null=True, blank=True)
+    motorcycleBrandAndModel = models.CharField('MC Brand and Model', help_text='MC Brand and Model', null=True,
+                                               blank=True, max_length=120)
+    riderClass = models.ForeignKey(RiderClass, on_delete=models.CASCADE, null=True, blank=True)
+
     # active members have a membership ending in the current year or the next year. This limits the active membership to
     # 2 years, but the membership probably has the active year in the api. There may be edge cases.
     # active = models.BooleanField('Membership Active', help_text='Membership Active')

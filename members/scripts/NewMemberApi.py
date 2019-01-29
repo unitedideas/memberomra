@@ -14,8 +14,10 @@ json application
 body:
 { "shouldSendNotification":"true" }
 """
+import sys
 import json
 import requests
+from memberomra.secrets import OMRA_API_KEY
 
 """connect to squarespace API"""
 
@@ -23,7 +25,7 @@ baseUrl = 'https://api.squarespace.com/1.0/commerce/orders'
 
 # curl "https://api.squarespace.com/1.0/commerce/orders?modifiedAfter=2016-04-10T12:00:00Z&modifiedBefore=2016-04-15T12:30:00Z" -H "Authorization: Bearer df7d9174-295d-4730-b73d-4f97230c1838"
 headers = {
-    'Authorization': 'Bearer df7d9174-295d-4730-b73d-4f97230c1838',
+    'Authorization': OMRA_API_KEY,
 }
 
 params = (
@@ -49,17 +51,25 @@ key_list = ['firstName', 'lastName', 'memberNumber', 'birthDate', 'motorcycleBra
 data_list = []
 
 response = requests.get('https://api.squarespace.com/1.0/commerce/orders/', headers=headers, params=params)
-testDict = response.json()
+pendingMembers = response.json()
 # customizations
+custom_form_data = pendingMembers['result']
+for each in custom_form_data:
+    for rider in each['lineItems']:
+        # printing all riders from all orders even oreders with multiple orders
+        # each rider is on their own line
+        # print(rider)
+        for eachItem in rider['customizations']:
+            print(eachItem)
 
-custom_form_data = testDict['result'][0]['lineItems'][0]['customizations']
-for each_dict in range(len(custom_form_data)):
-    for label_value in custom_form_data[each_dict]:
-        if label_value == 'value':
-            if custom_form_data[each_dict]['label'] != 'Rider Age *':
-                data_list.append(custom_form_data[each_dict][label_value])
-print(data_list)
-data_dict = dict(zip(key_list, data_list))
-print(data_dict)
-# print(single_order_data[data_point][0]['customizations'])
+    # print(each['lineItems'][0]['customizations'])
+# for each_dict in range(len(custom_form_data)):
+#     for label_value in custom_form_data[each_dict]:
+#         if label_value == 'value':
+#             if custom_form_data[each_dict]['label'] != 'Rider Age *':
+#                 data_list.append(custom_form_data[each_dict][label_value])
+# print(data_list)
+# data_dict = dict(zip(key_list, data_list))
+# print(data_dict)
+# # print(single_order_data[data_point][0]['customizations'])
 print('----------------')

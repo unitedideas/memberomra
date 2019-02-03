@@ -46,14 +46,12 @@ params = (
 # my_dict.update({'corse': 'my new definition'})
 
 
-
 response = requests.get('https://api.squarespace.com/1.0/commerce/orders/', headers=headers, params=params)
 pendingMembers = response.json()
 # customizations
 custom_form_data = pendingMembers['result']
 for each in custom_form_data:
     for rider in each['lineItems']:
-        count = 0
         key_list = []
         data_list = []
         try:
@@ -61,12 +59,12 @@ for each in custom_form_data:
                 for value in eachItem:
                     if value == 'label':
                         key_list.append(eachItem[value])
-                        print(eachItem[value])
                     if value == 'value':
                         data_list.append(eachItem[value])
-                        print(eachItem[value])
             doc_zip = dict(zip(key_list, data_list))
-            print(doc_zip)
+            r = json.dumps(doc_zip)
+            print(r)
+
         except TypeError:
             print('TypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeError')
         print('--------------------')

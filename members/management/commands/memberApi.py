@@ -18,8 +18,6 @@ from django.core.management.base import BaseCommand
 import json
 import requests
 from memberomra.secrets import OMRA_API_KEY
-
-
 from members.models import Rider
 
 
@@ -66,9 +64,6 @@ def add_members():
 
             except TypeError:
                 print('TypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeError')
-
-
-add_members()
 
 
 class Command(BaseCommand):

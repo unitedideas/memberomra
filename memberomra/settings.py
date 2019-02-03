@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 from memberomra.secrets import *
-from members.models import *
 try:
     from memberomra.secrets import SECRET_KEY
 except ImportError:

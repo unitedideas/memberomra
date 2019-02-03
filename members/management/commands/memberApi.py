@@ -20,8 +20,6 @@ import requests
 from memberomra.secrets import OMRA_API_KEY
 
 
-# from members.models import Rider
-
 
 def add_members():
     """connect to squarespace API"""

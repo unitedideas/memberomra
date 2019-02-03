@@ -1,3 +1,11 @@
+
+""" Turn these off when running on server"""
+
+import os
+import django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "memberomra.settings")
+django.setup()
+
 """connect to the squarespace api
     authinticate
 
@@ -65,6 +73,7 @@ def add_members():
             except TypeError:
                 print('TypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeError')
 
+add_members()
 
 class Command(BaseCommand):
     def handle(self, *args, **options):

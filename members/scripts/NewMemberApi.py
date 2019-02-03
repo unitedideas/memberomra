@@ -46,9 +46,6 @@ params = (
 # my_dict.update({'corse': 'my new definition'})
 
 
-key_list = ['firstName', 'lastName', 'memberNumber', 'birthDate', 'motorcycleBrandAndModel', 'email',
-            'riderClass']
-data_list = []
 
 response = requests.get('https://api.squarespace.com/1.0/commerce/orders/', headers=headers, params=params)
 pendingMembers = response.json()
@@ -56,20 +53,20 @@ pendingMembers = response.json()
 custom_form_data = pendingMembers['result']
 for each in custom_form_data:
     for rider in each['lineItems']:
-        # printing all riders from all orders even oreders with multiple orders
-        # each rider is on their own line
-        # print(rider)
-        for eachItem in rider['customizations']:
-            print(eachItem)
-
-    # print(each['lineItems'][0]['customizations'])
-# for each_dict in range(len(custom_form_data)):
-#     for label_value in custom_form_data[each_dict]:
-#         if label_value == 'value':
-#             if custom_form_data[each_dict]['label'] != 'Rider Age *':
-#                 data_list.append(custom_form_data[each_dict][label_value])
-# print(data_list)
-# data_dict = dict(zip(key_list, data_list))
-# print(data_dict)
-# # print(single_order_data[data_point][0]['customizations'])
-print('----------------')
+        count = 0
+        key_list = []
+        data_list = []
+        try:
+            for eachItem in rider['customizations']:
+                for value in eachItem:
+                    if value == 'label':
+                        key_list.append(eachItem[value])
+                        print(eachItem[value])
+                    if value == 'value':
+                        data_list.append(eachItem[value])
+                        print(eachItem[value])
+            doc_zip = dict(zip(key_list, data_list))
+            print(doc_zip)
+        except TypeError:
+            print('TypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeError')
+        print('--------------------')

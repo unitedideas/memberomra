@@ -15,10 +15,10 @@ body:
 { "shouldSendNotification":"false" }
 """
 from django.core.management.base import BaseCommand
-from members.models import Rider
 import json
 import requests
 from memberomra.secrets import OMRA_API_KEY
+from members.models import Rider
 
 
 class Command(BaseCommand):

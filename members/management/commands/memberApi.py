@@ -1,8 +1,8 @@
-
 """ Turn these off when running on server"""
 
 import os
 import django
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "memberomra.settings")
 django.setup()
 
@@ -67,11 +67,14 @@ def add_members():
                         if value == 'value':
                             data_list.append(eachItem[value])
                 doc_zip = dict(zip(key_list, data_list))
-                print(len(doc_zip))
                 if (len(doc_zip)) < 7:
+                    print('-----------------------------------')
                     doc_zip['Class'] = "None"
-                r = json.dumps(doc_zip)
-                print(r)
+                    print(len(doc_zip))
+                    r = json.dumps(doc_zip)
+                    print(r)
+                # Get or create rider object
+                # post rider fulfilled and shouldSendNotification":"false"
 
 
                 # Rider.objects.get_or_create(
@@ -94,16 +97,8 @@ def add_members():
     # riderClass
 
 
-    obj, created = Rider.objects.get_or_create(
-        firstName='John',
-        lastName='Smith',
-    )
-    print(obj)
-    print(created)
-    r = Rider.objects.all()
-    print(r)
-
 add_members()
+
 
 class Command(BaseCommand):
     def handle(self, *args, **options):

@@ -76,7 +76,6 @@ def add_members():
                 # Get or create rider object
                 # post rider fulfilled and shouldSendNotification":"false"
 
-
                 # Rider.objects.get_or_create(
                 #     firstName='John',
                 #     lastName='Smith',

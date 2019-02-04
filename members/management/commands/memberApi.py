@@ -67,11 +67,41 @@ def add_members():
                         if value == 'value':
                             data_list.append(eachItem[value])
                 doc_zip = dict(zip(key_list, data_list))
+                print(len(doc_zip))
+                if (len(doc_zip)) < 7:
+                    doc_zip['Class'] = "None"
                 r = json.dumps(doc_zip)
                 print(r)
 
+
+                # Rider.objects.get_or_create(
+                #     firstName='John',
+                #     lastName='Smith',
+                # )
+
             except TypeError:
                 print('TypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeError')
+
+    # firstName
+    # lastName
+    # phoneNumber
+    # email
+    # birthDate
+    # memberNumber
+    # plateNumber
+    # membershipYear
+    # motorcycleBrandAndModel
+    # riderClass
+
+
+    obj, created = Rider.objects.get_or_create(
+        firstName='John',
+        lastName='Smith',
+    )
+    print(obj)
+    print(created)
+    r = Rider.objects.all()
+    print(r)
 
 add_members()
 

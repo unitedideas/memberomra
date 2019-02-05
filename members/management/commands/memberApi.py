@@ -51,7 +51,7 @@ def add_members():
     # Email Address *
     # Class *
 
-    response = requests.get('https://api.squarespace.com/1.0/commerce/orders/', headers=headers, params=params)
+    response = requests.get(baseUrl, headers=headers, params=params)
     pendingMembers = response.json()
     # customizations
     custom_form_data = pendingMembers['result']
@@ -59,6 +59,8 @@ def add_members():
         for rider in each['lineItems']:
             key_list = []
             data_list = []
+            member_id = rider['id']
+            print(member_id)
             try:
                 for eachItem in rider['customizations']:
                     for value in eachItem:
@@ -71,8 +73,27 @@ def add_members():
                     print('-----------------------------------')
                     doc_zip['Class'] = "None"
                     print(len(doc_zip))
-                    r = json.dumps(doc_zip)
-                    print(r)
+                r = json.dumps(doc_zip)
+                print(r)
+
+                headers = {
+                    'Authorization': OMRA_API_KEY,
+                    'content-type': 'application/json',
+                }
+
+                body = {
+                    "shouldSendNotification": "false"
+                }
+
+                # params = (
+                #     ('fulfillmentStatus', 'FULFILLED'),
+                # )
+
+                fulfill = requests.post(
+                    'https://api.squarespace.com/1.0/commerce/orders/' + member_id + '/fulfillments', headers=headers, json=body)
+                # fulfillstatus = fulfill.json()
+                print(fulfill)
+
                 # Get or create rider object
                 # post rider fulfilled and shouldSendNotification":"false"
 

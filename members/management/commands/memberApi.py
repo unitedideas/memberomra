@@ -59,7 +59,7 @@ def add_members():
         for rider in each['lineItems']:
             key_list = []
             data_list = []
-            member_id = rider['id']
+            member_id = each['id']
             print(member_id)
             try:
                 for eachItem in rider['customizations']:
@@ -82,17 +82,12 @@ def add_members():
                 }
 
                 body = {
-
-                    "shouldSendNotification": "false"
+                    "shouldSendNotification": 'false',
                 }
 
-                # params = (
-                #     ('fulfillmentStatus', 'FULFILLED'),
-                # )
-
                 fulfill = requests.post(
-                    'https://api.squarespace.com/1.0/commerce/orders/' + member_id + '/fulfillments', headers=headers, json=body)
-                # fulfillstatus = fulfill.json()
+                    'https://api.squarespace.com/1.0/commerce/orders/' + member_id + '/fulfillments', headers=headers,
+                    json=body)
                 print(fulfill)
 
                 # Get or create rider object

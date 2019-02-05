@@ -82,6 +82,7 @@ def add_members():
                 }
 
                 body = {
+
                     "shouldSendNotification": "false"
                 }
 

@@ -76,6 +76,8 @@ def add_members():
                 r = json.dumps(doc_zip)
                 print(r)
 
+
+
                 headers = {
                     'Authorization': OMRA_API_KEY,
                     'content-type': 'application/json',
@@ -85,10 +87,10 @@ def add_members():
                     "shouldSendNotification": 'false',
                 }
 
-                fulfill = requests.post(
-                    'https://api.squarespace.com/1.0/commerce/orders/' + member_id + '/fulfillments', headers=headers,
-                    json=body)
-                print(fulfill)
+                # fulfill = requests.post(
+                #     'https://api.squarespace.com/1.0/commerce/orders/' + member_id + '/fulfillments', headers=headers,
+                #     json=body)
+                # print(fulfill)
 
                 # Get or create rider object
                 # post rider fulfilled and shouldSendNotification":"false"

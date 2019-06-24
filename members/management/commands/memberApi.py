@@ -76,8 +76,6 @@ def add_members():
                 r = json.dumps(doc_zip)
                 print(r)
 
-
-
                 headers = {
                     'Authorization': OMRA_API_KEY,
                     'content-type': 'application/json',
@@ -101,7 +99,7 @@ def add_members():
                 # )
 
             except TypeError:
-                print('TypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeErrorTypeError')
+                print('TypeError')
 
     # firstName
     # lastName

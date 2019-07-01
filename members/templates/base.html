@@ -4,13 +4,10 @@
 <head>
     {#Favicon#}
     {#    <link rel="shortcut icon" href='{% static "events/favicon.ico" %}' type="image/x-icon"/>#}
-
     {# Axios CDN #}
     <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js'></script>
-
     {# static files #}
     <link rel="stylesheet" type="text/css" href='{% static "memberomra/css/base.css" %}'>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     {#place the google analytics JS here#}
     {% block head %}
@@ -19,7 +16,6 @@
 </head>
 <body>
 <div class="header_top_block "></div>
-
 <div class="header">
     <a href="/search" id="search_nav" class="link">
         <div class="title">Search</div>
@@ -31,7 +27,6 @@
         <div class="title">Logout</div>
     </a>
 </div>
-
 {% block body %}
     <h1>Base</h1>
 {% endblock %}

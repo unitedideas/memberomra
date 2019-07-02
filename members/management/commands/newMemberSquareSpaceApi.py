@@ -30,6 +30,7 @@ from members.models import Rider
 
 
 def add_members():
+    print('In the add_members func')
     """connect to squarespace API"""
 
     baseUrl = 'https://api.squarespace.com/1.0/commerce/orders'

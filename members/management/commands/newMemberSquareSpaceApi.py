@@ -43,6 +43,7 @@ def add_members():
         ('fulfillmentStatus', 'PENDING'),
     )
 
+    # Data the form requires
     # First Name
     # Last Name
     # Current Rider OMRA Number
